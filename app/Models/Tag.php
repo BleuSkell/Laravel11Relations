@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
-{   
+class Tag extends Model
+{
+    /** @use HasFactory<\Database\Factories\TagFactory> */
     use HasFactory;
 
     protected $guarded = [];
 
-    public function user()
+    public function posts()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(Post::class)->withTimeStamps();
     }
 }
